@@ -1,16 +1,25 @@
 <template>
     <div class="hello">
         <h1>{{ msg }}</h1>
-        <el-button>Default</el-button>
+        <div v-for="count in getCounter" :key="count">OMG {{ count }}</div>
+        <el-button @click="pCounter()">+</el-button>
+        <el-button @click="mCounter()">-</el-button>
     </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
     name: 'HelloWorld',
     props: {
         msg: String,
     },
+    methods: {
+        ...mapActions(['pCounter', 'mCounter']),
+    },
+    computed: mapGetters(['getCounter']),
+    created() {},
 };
 </script>
 

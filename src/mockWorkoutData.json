@@ -1,0 +1,99 @@
+{
+    "workout-list": [
+        {
+            "workoutName": "Chest Shoulders & Triceps",
+            "exercises": [
+                {
+                    "name": "Bench Press",
+                    "sets": "3 sets of 6-8 reps"
+                },
+                {
+                    "name": "Incline Dumbbell Press",
+                    "sets": "3 sets of 8-12 reps"
+                },
+                {
+                    "name": "Cable Crossover",
+                    "sets": "3 sets of 8-12 reps"
+                },
+                {
+                    "name": "Overhead Press",
+                    "sets": "3 sets of 8-12 reps"
+                },
+                {
+                    "name": "Lateral Raises",
+                    "sets": "3 sets of 8-12 reps"
+                },
+                {
+                    "name": "Skullcrushers",
+                    "sets": "3 sets of 8-12 reps"
+                },
+                {
+                    "name": "Triceps Rope Pressdown",
+                    "sets": "3 sets of 8-12 reps"
+                }
+            ]
+        },
+        {
+            "workoutName": "Back and Biceps",
+            "exercises": [
+                {
+                    "name": "Cable Row",
+                    "sets": "3 sets of 8-12 reps"
+                },
+                {
+                    "name": "Lat Pulldown",
+                    "sets": "3 sets of 8-12 reps"
+                },
+                {
+                    "name": "Bend Over Flies",
+                    "sets": "3 sets of 8-12 reps"
+                },
+                {
+                    "name": "Hyperextensions",
+                    "sets": "3 sets of 8-12 reps"
+                },
+                {
+                    "name": "Bicep Barbell Curls",
+                    "sets": "3 sets of 8-12 reps"
+                },
+                {
+                    "name": "Hammer Curls",
+                    "sets": "3 sets of 8-12 reps"
+                }
+            ]
+        },
+        {
+            "workoutName": "Legs and Core",
+            "exercises": [
+                {
+                    "name": "Squat",
+                    "sets": "3 sets of 6-8 reps"
+                },
+                {
+                    "name": "Leg Press",
+                    "sets": "3 sets of 8-12 reps"
+                },
+                {
+                    "name": "Leg Extension",
+                    "sets": "3 sets of 8-12 reps"
+                },
+                {
+                    "name": "Leg Curl",
+                    "sets": "3 sets of 8-12 reps"
+                },
+                {
+                    "name": "Standing Calf Raises",
+                    "sets": "3 sets of 8-12 reps"
+                },
+                {
+                    "name": "Plank",
+                    "sets": "3 sets of 30-60 seconds"
+                },
+                {
+                    "name": "Crunch",
+                    "sets": "3 sets of 15-20 seconds"
+                }
+            ]
+        }
+    ]
+}

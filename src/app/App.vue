@@ -8,6 +8,19 @@
     </div>
 </template>
 
+<script>
+import mockData from '../mockWorkoutData.json';
+
+export default {
+    mounted() {
+        if (!sessionStorage.mockWorkoutData) {
+            sessionStorage.setItem('mockWorkoutData', JSON.stringify(mockData));
+            // var obj = JSON.parse(sessionStorage.user);
+        }
+    },
+};
+</script>
+
 <style>
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
