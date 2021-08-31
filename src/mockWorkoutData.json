@@ -1,97 +1,143 @@
 {
     "workout-list": [
         {
+            "id": 1,
             "workoutName": "Chest Shoulders & Triceps",
+            "workoutComplete": false,
             "exercises": [
                 {
+                    "id": 1,
                     "name": "Bench Press",
-                    "sets": "3 sets of 6-8 reps"
+                    "sets": "3 sets of 6-8 reps",
+                    "complete": false
                 },
                 {
+                    "id": 2,
                     "name": "Incline Dumbbell Press",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 },
                 {
+                    "id": 3,
                     "name": "Cable Crossover",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 },
                 {
+                    "id": 4,
                     "name": "Overhead Press",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 },
                 {
+                    "id": 5,
                     "name": "Lateral Raises",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 },
                 {
+                    "id": 6,
                     "name": "Skullcrushers",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 },
                 {
+                    "id": 7,
                     "name": "Triceps Rope Pressdown",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 }
             ]
         },
         {
+            "id": 2,
             "workoutName": "Back and Biceps",
+            "workoutComplete": false,
             "exercises": [
                 {
+                    "id": 1,
                     "name": "Cable Row",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 },
                 {
+                    "id": 2,
                     "name": "Lat Pulldown",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 },
                 {
+                    "id": 3,
                     "name": "Bend Over Flies",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 },
                 {
+                    "id": 4,
                     "name": "Hyperextensions",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 },
                 {
+                    "id": 5,
                     "name": "Bicep Barbell Curls",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 },
                 {
+                    "id": 6,
                     "name": "Hammer Curls",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 }
             ]
         },
         {
+            "id": 3,
             "workoutName": "Legs and Core",
+            "workoutComplete": false,
             "exercises": [
                 {
+                    "id": 1,
                     "name": "Squat",
-                    "sets": "3 sets of 6-8 reps"
+                    "sets": "3 sets of 6-8 reps",
+                    "complete": false
                 },
                 {
+                    "id": 2,
                     "name": "Leg Press",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 },
                 {
+                    "id": 3,
                     "name": "Leg Extension",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 },
                 {
+                    "id": 4,
                     "name": "Leg Curl",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 },
                 {
+                    "id": 5,
                     "name": "Standing Calf Raises",
-                    "sets": "3 sets of 8-12 reps"
+                    "sets": "3 sets of 8-12 reps",
+                    "complete": false
                 },
                 {
+                    "id": 6,
                     "name": "Plank",
-                    "sets": "3 sets of 30-60 seconds"
+                    "sets": "3 sets of 30-60 seconds",
+                    "complete": false
                 },
                 {
+                    "id": 7,
                     "name": "Crunch",
-                    "sets": "3 sets of 15-20 seconds"
+                    "sets": "3 sets of 15-20 seconds",
+                    "complete": false
                 }
             ]
         }
