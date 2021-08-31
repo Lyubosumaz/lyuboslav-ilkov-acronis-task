@@ -1,11 +1,10 @@
 {
-    "name": "Workout List",
+    "name": "workout_list",
     "description": "Acronis post-interview task",
     "version": "0.1.0",
     "private": true,
     "scripts": {
         "serve": "npm run lint --fix && vue-cli-service serve",
-        "build": "vue-cli-service build",
         "test:unit": "vue-cli-service test:unit",
         "lint": "vue-cli-service lint"
     },

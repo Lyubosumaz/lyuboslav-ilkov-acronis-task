@@ -1,29 +1,33 @@
-# test
+# lyuboslav-ilkov-acronis-task
 
 ## Project setup
+
+Install the dependencies
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+Run development mode
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+Open browser
+
 ```
-npm run build
+http://localhost:8080
 ```
 
 ### Run your unit tests
+
 ```
 npm run test:unit
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+### Run your lint
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+npm run lint --fix
+```
