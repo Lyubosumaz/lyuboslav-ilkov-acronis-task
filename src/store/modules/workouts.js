@@ -30,48 +30,40 @@ const actions = {
 const mutations = {
     setWorkouts: (state, data) => (state.workouts = data),
     addWorkout: (state, data) => {
-        state.workouts = [
-            {
-                // id: state.workout.length
-                //     ? state.workout.reduce((acc, curr) => {
-                //         console.log(acc, curr);
-                //     }, -Infinity)
-                //     : 1,
-                id: 11,
-                workoutName: data,
-                workoutComplete: false,
-                exercises: [],
-            },
-            ...state.workouts,
-        ];
+        state.workouts.unshift({
+            id: state?.workouts.length ? state.workouts.length + 1 : 1,
+            workoutName: data,
+            workoutComplete: false,
+            exercises: [],
+        });
     },
-    removeWorkout: (state, data) => {
-        const dataTODO = 11;
-        console.log(data);
-
+    removeWorkout: (state, targetWorkout) => {
         state.workouts = state.workouts.filter(
-            (workout) => workout.id !== dataTODO
+            (workout) => workout.id !== targetWorkout
         );
     },
-    addExercise: (state, data) => {
-        state.workouts[0].exercises.push({
-            id: 11,
-            name: data.name,
-            sets: data.sets,
-            complete: false,
+    addExercise: (state, [targetWorkout, data]) => {
+        state.workouts.forEach((workout) => {
+            if (workout.id === targetWorkout) {
+                workout.exercises.push({
+                    id: workout?.exercises.length
+                        ? workout.exercises.length + 1
+                        : 1,
+                    name: data.name,
+                    sets: data.sets,
+                    complete: false,
+                });
+                workout.workoutComplete = false;
+            }
         });
     },
     removeExercise: (state, [targetWorkout, targetExercise]) => {
-        console.log(targetWorkout, targetExercise);
-
-        state.workouts = state.workouts.map((workout) => {
-            if (workout.id !== targetWorkout) return workout;
-
-            workout.exercises.filter(
-                (exercise) => exercise.id !== targetExercise
-            );
-
-            return;
+        state.workouts.forEach((workout) => {
+            if (workout.id === targetWorkout) {
+                workout.exercises = workout.exercises.filter(
+                    (exercise) => exercise.id !== targetExercise
+                );
+            }
         });
     },
 };

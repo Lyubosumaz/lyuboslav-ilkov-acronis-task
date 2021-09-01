@@ -10,7 +10,8 @@ module.exports = {
     rules: {
         'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-        // 'vue/script-indent': ['error', 4, {'baseIndent': 1}],
+        'no-unused-vars': 'warn',
+        'vue/no-unused-components': 'warn',
         indent: ['error', 4],
     },
     overrides: [
