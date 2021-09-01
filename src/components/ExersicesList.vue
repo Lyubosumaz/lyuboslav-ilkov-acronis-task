@@ -7,7 +7,11 @@
         >
             <div>{{ exercise.name }}</div>
             <div>{{ exercise.sets }}</div>
-            <el-button>Edit Exercise</el-button>
+            <div>{{ exercise.complete ? 'yes' : 'no' }}</div>
+
+            <el-button @click="completeExercise([workoutId, exercise.id])"
+                >Edit Exercise</el-button
+            >
             <el-button @click="deleteExercise([workoutId, exercise.id])"
                 >Delete Exercise</el-button
             >
@@ -34,10 +38,7 @@ export default {
         exercises: Array,
     },
     methods: {
-        ...mapActions(['createExercise', 'deleteExercise']),
-    },
-    created() {
-        console.log(this.workoutId);
+        ...mapActions(['createExercise', 'completeExercise', 'deleteExercise']),
     },
 };
 </script>

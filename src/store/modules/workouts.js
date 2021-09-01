@@ -22,6 +22,9 @@ const actions = {
     createExercise({ commit }, data) {
         commit('addExercise', data);
     },
+    completeExercise({ commit }, data) {
+        commit('updateExercise', data);
+    },
     deleteExercise({ commit }, data) {
         commit('removeExercise', data);
     },
@@ -54,6 +57,17 @@ const mutations = {
                     complete: false,
                 });
                 workout.workoutComplete = false;
+            }
+        });
+    },
+    updateExercise: (state, [targetWorkout, targetExercise]) => {
+        state.workouts.forEach((workout) => {
+            if (workout.id === targetWorkout) {
+                workout.exercises.forEach((exercise) => {
+                    if (exercise.id === targetExercise) {
+                        exercise.complete = !exercise.complete;
+                    }
+                });
             }
         });
     },
