@@ -64,31 +64,31 @@
                     "id": 2,
                     "name": "Lat Pulldown",
                     "sets": "3 sets of 8-12 reps",
-                    "complete": false
+                    "complete": true
                 },
                 {
                     "id": 3,
                     "name": "Bend Over Flies",
                     "sets": "3 sets of 8-12 reps",
-                    "complete": false
+                    "complete": true
                 },
                 {
                     "id": 4,
                     "name": "Hyperextensions",
                     "sets": "3 sets of 8-12 reps",
-                    "complete": false
+                    "complete": true
                 },
                 {
                     "id": 5,
                     "name": "Bicep Barbell Curls",
                     "sets": "3 sets of 8-12 reps",
-                    "complete": false
+                    "complete": true
                 },
                 {
                     "id": 6,
                     "name": "Hammer Curls",
                     "sets": "3 sets of 8-12 reps",
-                    "complete": false
+                    "complete": true
                 }
             ]
         },

@@ -24,6 +24,7 @@ const actions = {
     },
     completeExercise({ commit }, data) {
         commit('updateExercise', data);
+        commit('checkWorkoutCompletion', data);
     },
     deleteExercise({ commit }, data) {
         commit('removeExercise', data);
@@ -77,6 +78,21 @@ const mutations = {
                 workout.exercises = workout.exercises.filter(
                     (exercise) => exercise.id !== targetExercise
                 );
+            }
+        });
+    },
+    checkWorkoutCompletion: (state, [targetWorkout]) => {
+        state.workouts.forEach((workout) => {
+            if (workout.id === targetWorkout) {
+                const numberOfIncompleteExercises = workout.exercises.filter(
+                    (exercise) => exercise.complete != true
+                ).length;
+
+                if (numberOfIncompleteExercises === 0) {
+                    workout.workoutComplete = true;
+                } else {
+                    workout.workoutComplete = false;
+                }
             }
         });
     },

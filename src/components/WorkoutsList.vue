@@ -15,6 +15,13 @@
                 :key="index"
             >
                 <h2>{{ workout.workoutName }}</h2>
+                <h2>
+                    {{
+                        workout.workoutComplete
+                            ? 'Workout is Complete'
+                            : 'Workout is Incomplete'
+                    }}
+                </h2>
 
                 <ExersicesList
                     :workoutId="workout.id"
