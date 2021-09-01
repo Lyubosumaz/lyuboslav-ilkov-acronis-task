@@ -28,6 +28,7 @@ const actions = {
     },
     deleteExercise({ commit }, data) {
         commit('removeExercise', data);
+        commit('checkWorkoutCompletion', data);
     },
 };
 

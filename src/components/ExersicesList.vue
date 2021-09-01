@@ -1,27 +1,66 @@
 <template>
     <ul class="exersices-list">
-        <li
-            class="exercise-card"
-            v-for="(exercise, index) in exercises"
-            :key="index"
-        >
-            <div>{{ exercise.name }}</div>
-            <div>{{ exercise.sets }}</div>
-            <div>{{ exercise.complete ? 'yes' : 'no' }}</div>
+        <li v-for="(exercise, index) in exercises" :key="index">
+            <el-card
+                class="exersice-card"
+                :class="[exercise.complete ? 'complete' : 'incomplete']"
+                :body-style="{
+                    padding: '0.25em 0.75em',
+                    display: 'flex',
+                    'justify-content': 'space-between',
+                    'align-items': 'center',
+                }"
+            >
+                <div class="exersice-title">
+                    <h3>{{ exercise.name }}</h3>
+                    <p>{{ exercise.sets }}</p>
+                </div>
 
-            <el-button @click="completeExercise([workoutId, exercise.id])"
-                >Edit Exercise</el-button
-            >
-            <el-button @click="deleteExercise([workoutId, exercise.id])"
-                >Delete Exercise</el-button
-            >
+                <div>
+                    <el-button
+                        circle
+                        class="toggle-btn"
+                        :class="[
+                            exercise.complete
+                                ? 'toggle-btn-failure'
+                                : 'toggle-btn-success ',
+                        ]"
+                        @click="completeExercise([workoutId, exercise.id])"
+                        ><i
+                            :class="[
+                                exercise.complete
+                                    ? 'el-icon-close'
+                                    : 'el-icon-check',
+                            ]"
+                        ></i
+                    ></el-button>
+
+                    <el-popconfirm
+                        title="You want to delete the exercise?"
+                        @confirm="deleteExercise([workoutId, exercise.id])"
+                        confirm-button-text="Delete"
+                        icon="el-icon-delete"
+                        icon-color="red"
+                    >
+                        <el-button
+                            slot="reference"
+                            type="danger"
+                            icon="el-icon-delete"
+                            circle
+                        ></el-button>
+                    </el-popconfirm>
+                </div>
+            </el-card>
         </li>
 
         <el-button
             @click="
                 createExercise([
                     workoutId,
-                    { name: 'Test Exercise', sets: 'do as much as you can' },
+                    {
+                        name: 'Test Exercise',
+                        sets: 'do as much as you can',
+                    },
                 ])
             "
             >Create Exercise</el-button
@@ -42,3 +81,40 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.exersices-list {
+    padding: 0;
+    list-style-type: none;
+}
+.exersice-card {
+    margin: 0.5em;
+    border-width: 2px;
+}
+.exersice-title {
+    width: 20rem;
+    display: inline-block;
+}
+.exersice-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.complete {
+    border-color: #67c23a;
+    background: #c6f0e6;
+}
+.incomplete {
+    border-color: #909399;
+}
+.toggle-btn {
+    margin-right: 0.5em;
+    color: #fff;
+}
+.toggle-btn-success {
+    background-color: #67c12a;
+}
+.toggle-btn-failure {
+    background-color: #f56c6c;
+}
+</style>
