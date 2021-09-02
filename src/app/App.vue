@@ -19,7 +19,7 @@ import mockData from '../mockWorkoutData.json';
 
 export default {
     mounted() {
-        // mockFetch 'GET'
+        // mock server data
         if (!sessionStorage.mockWorkoutData) {
             sessionStorage.setItem('mockWorkoutData', JSON.stringify(mockData));
         }

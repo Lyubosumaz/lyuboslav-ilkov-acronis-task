@@ -1,7 +1,5 @@
 <template>
     <section>
-        <h1>{{ msg }}</h1>
-
         <WorkoutForm />
 
         <ul class="workouts-list">
@@ -19,27 +17,47 @@
                         <div class="workout-title-wrapper">
                             <h2>{{ workout.workoutName }}</h2>
 
-                            <el-tooltip
-                                class="item"
-                                effect="dark"
-                                content="Delete Workout"
-                                placement="right"
-                            >
-                                <el-popconfirm
-                                    title="Are you sure you want to delete the workout?"
-                                    @confirm="deleteButton(workout.id)"
-                                    confirm-button-text="Delete"
-                                    icon="el-icon-delete"
-                                    icon-color="red"
+                            <div class="workout-button-wrapper">
+                                <el-tooltip
+                                    class="item"
+                                    effect="dark"
+                                    content="Edit"
+                                    placement="top"
                                 >
                                     <el-button
-                                        slot="reference"
-                                        type="danger"
-                                        icon="el-icon-delete"
+                                        type="primary"
+                                        icon="el-icon-edit"
+                                        size="small"
                                         circle
+                                        @click="editButton(getWorkouts[index])"
                                     ></el-button>
-                                </el-popconfirm>
-                            </el-tooltip>
+                                </el-tooltip>
+                            </div>
+
+                            <div class="workout-button-wrapper">
+                                <el-tooltip
+                                    class="item"
+                                    effect="dark"
+                                    content="Delete Workout"
+                                    placement="right"
+                                >
+                                    <el-popconfirm
+                                        title="Are you sure you want to delete the workout?"
+                                        @confirm="deleteButton(workout.id)"
+                                        confirm-button-text="Delete"
+                                        icon="el-icon-delete"
+                                        icon-color="red"
+                                    >
+                                        <el-button
+                                            slot="reference"
+                                            type="danger"
+                                            icon="el-icon-delete"
+                                            size="small"
+                                            circle
+                                        ></el-button>
+                                    </el-popconfirm>
+                                </el-tooltip>
+                            </div>
                         </div>
 
                         <h5>
@@ -73,9 +91,6 @@ export default {
         ExersicesList,
         WorkoutForm,
     },
-    props: {
-        msg: String,
-    },
     data() {
         return {
             form: {
@@ -84,7 +99,15 @@ export default {
         };
     },
     methods: {
-        ...mapActions(['mockFetchInitialLoad', 'deleteWorkout']),
+        ...mapActions([
+            'mockFetchInitialLoad',
+            'setCurrentWorkout',
+            'deleteWorkout',
+        ]),
+        editButton(workout) {
+            this.setCurrentWorkout(workout);
+            this.$router.push('/edit-workout');
+        },
         deleteButton(workoutId) {
             this.deleteWorkout(workoutId);
 
@@ -94,6 +117,7 @@ export default {
     },
     computed: mapGetters(['getWorkouts']),
     created() {
+        // mockFetch 'GET'
         this.mockFetchInitialLoad();
     },
 };
@@ -114,8 +138,8 @@ export default {
 .workout-title-wrapper {
     display: flex;
 }
-.workout-title-wrapper h2 {
-    margin-right: 0.5em;
+.workout-button-wrapper {
+    margin-left: 0.5em;
 }
 .complete {
     background: #c6f0e6;

@@ -1,12 +1,14 @@
 const state = {
     workouts: [],
     selectedWorkoutId: null,
+    selectedWorkout: null,
     selectedExercise: null,
 };
 
 const getters = {
     getWorkouts: (state) => state.workouts,
     getCurrentWorkoutId: (state) => state.selectedWorkoutId,
+    getCurrentWorkout: (state) => state.selectedWorkout,
     getCurrentExercise: (state) => state.selectedExercise,
 };
 
@@ -17,8 +19,16 @@ const actions = {
         ];
         commit('setWorkouts', mockResponse);
     },
-    setCurrentWorkout({ commit }, data) {
+    setCurrentWorkoutId({ commit }, data) {
         commit('saveCurrentWorkoutId', data);
+    },
+    setCurrentWorkout({ commit }, data) {
+        commit('saveCurrentWorkout', data);
+    },
+    updateCurrentWorkout({ commit }, data) {
+        commit('updateDataWorkout', data);
+
+        commit('removeSelectedWorkout');
     },
     createWorkout({ commit }, data) {
         commit('addWorkout', data);
@@ -65,6 +75,16 @@ const mutations = {
     },
     saveCurrentWorkoutId: (state, data) => {
         state.selectedWorkoutId = data;
+    },
+    saveCurrentWorkout: (state, data) => {
+        state.selectedWorkout = data;
+    },
+    updateDataWorkout: (state, data) => {
+        state.workouts.forEach((workout) => {
+            if (workout.id === data.id) {
+                workout.workoutName = data;
+            }
+        });
     },
     addExercise: (state, [targetWorkout, data]) => {
         state.workouts.forEach((workout) => {
@@ -143,6 +163,9 @@ const mutations = {
     },
     removeSelectedWorkoutId: (state) => {
         state.selectedWorkoutId = null;
+    },
+    removeSelectedWorkout: (state) => {
+        state.selectedWorkout = null;
     },
     removeSelectedExercise: (state) => {
         state.selectedExercise = null;

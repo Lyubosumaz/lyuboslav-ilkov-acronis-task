@@ -14,6 +14,11 @@ const routes = [
         name: 'EditExercise',
         component: () => import('../views/EditExercise.vue'),
     },
+    {
+        path: '/edit-workout',
+        name: 'EditWorkout',
+        component: () => import('../views/EditWorkout.vue'),
+    },
 ];
 
 const router = new VueRouter({

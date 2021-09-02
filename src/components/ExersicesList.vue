@@ -95,7 +95,7 @@ export default {
     methods: {
         ...mapActions([
             'completeExercise',
-            'setCurrentWorkout',
+            'setCurrentWorkoutId',
             'setCurrentExercise',
             'deleteExercise',
         ]),
@@ -106,7 +106,7 @@ export default {
             mockFetchREST(this.getWorkouts);
         },
         editButton(currentExercise) {
-            this.setCurrentWorkout(this.workoutId);
+            this.setCurrentWorkoutId(this.workoutId);
             this.setCurrentExercise(currentExercise);
             this.$router.push('/edit-exercise');
         },
