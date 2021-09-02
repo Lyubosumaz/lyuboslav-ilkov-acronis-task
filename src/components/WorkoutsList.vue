@@ -27,7 +27,7 @@
                             >
                                 <el-popconfirm
                                     title="Are you sure you want to delete the workout?"
-                                    @confirm="deleteWorkout(workout.id)"
+                                    @confirm="deleteButton(workout.id)"
                                     confirm-button-text="Delete"
                                     icon="el-icon-delete"
                                     icon-color="red"
@@ -65,6 +65,7 @@
 import { mapGetters, mapActions } from 'vuex';
 import ExersicesList from './ExersicesList.vue';
 import WorkoutForm from './WorkoutForm.vue';
+import { mockFetchREST } from '../utils/mockFetch';
 
 export default {
     name: 'WorkoutsList',
@@ -83,19 +84,23 @@ export default {
         };
     },
     methods: {
-        ...mapActions(['mockFetch', 'deleteWorkout']),
+        ...mapActions(['mockFetchInitialLoad', 'deleteWorkout']),
+        deleteButton(workoutId) {
+            this.deleteWorkout(workoutId);
+
+            // mockFetch 'DELETE'
+            mockFetchREST(this.getWorkouts);
+        },
     },
     computed: mapGetters(['getWorkouts']),
     created() {
-        this.mockFetch();
+        this.mockFetchInitialLoad();
     },
 };
 </script>
 
 <style scoped>
 .workouts-list {
-    width: 60em;
-    margin: 0 auto;
     list-style-type: none;
 }
 .workout-card {

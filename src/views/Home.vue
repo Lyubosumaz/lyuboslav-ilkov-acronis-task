@@ -1,7 +1,5 @@
 <template>
-    <main>
-        <WorkoutsList msg="Welcome to Your Vue.js App" />
-    </main>
+    <WorkoutsList msg="Welcome to Your Vue.js App" />
 </template>
 
 <script>

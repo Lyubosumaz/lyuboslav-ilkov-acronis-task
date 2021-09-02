@@ -1,6 +1,6 @@
 const state = {
     workouts: [],
-    selectedWorkoutIdId: null,
+    selectedWorkoutId: null,
     selectedExercise: null,
 };
 
@@ -11,7 +11,7 @@ const getters = {
 };
 
 const actions = {
-    mockFetch({ commit }) {
+    mockFetchInitialLoad({ commit }) {
         const mockResponse = JSON.parse(sessionStorage.mockWorkoutData)[
             'workout-list'
         ];
@@ -38,6 +38,7 @@ const actions = {
     },
     updateNameAndSetsExercise({ commit }, data) {
         commit('updateDataExercise', data);
+
         commit('removeSelectedWorkoutId');
         commit('removeSelectedExercise');
     },
@@ -95,8 +96,7 @@ const mutations = {
         state.selectedExercise = data;
     },
     updateDataExercise: (state, [targetWorkout, targetExercise, data]) => {
-        console.log(targetWorkout, targetExercise, data);
-
+        console.log('test', targetWorkout, targetExercise);
         state.workouts.forEach((workout) => {
             if (workout.id === targetWorkout) {
                 workout.exercises = workout.exercises.map((exercise) => {
@@ -105,10 +105,12 @@ const mutations = {
                             ...exercise,
                             name: data.name,
                             sets: data.sets,
+                            complete: false,
                         };
                     }
                     return exercise;
                 });
+                workout.workoutComplete = false;
             }
         });
     },

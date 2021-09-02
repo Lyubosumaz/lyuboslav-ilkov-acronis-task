@@ -1,6 +1,7 @@
 <template>
     <section>
         <h3>Add new exercise:</h3>
+
         <el-form
             ref="form"
             :model="form"
@@ -15,21 +16,7 @@
                 <el-input v-model="form.sets"></el-input>
             </el-form-item>
 
-            <el-button
-                @click="
-                    {
-                        createExercise([
-                            workoutId,
-                            {
-                                name: form.name,
-                                sets: form.sets,
-                            },
-                        ]);
-
-                        form.name = '';
-                        form.sets = '';
-                    }
-                "
+            <el-button @click="addExercise(form.name, form.sets)"
                 >Add Exercise</el-button
             >
         </el-form>
@@ -37,7 +24,8 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
+import { mockFetchREST } from '../utils/mockFetch';
 
 export default {
     name: 'ExersiceForm',
@@ -52,7 +40,25 @@ export default {
             },
         };
     },
-    methods: mapActions(['createExercise']),
+    methods: {
+        ...mapActions(['createExercise']),
+        addExercise(exerciseName, exerciseSets) {
+            this.createExercise([
+                this.workoutId,
+                {
+                    name: exerciseName,
+                    sets: exerciseSets,
+                },
+            ]);
+
+            this.form.name = '';
+            this.form.sets = '';
+
+            // mockFetch 'POST'
+            mockFetchREST(this.getWorkouts);
+        },
+    },
+    computed: mapGetters(['getWorkouts']),
 };
 </script>
 

@@ -1,11 +1,17 @@
 <template>
-    <!-- <div>
-        <div class="nav">
-            <router-link to="/">Home</router-link>
-            <router-link to="/about">About</router-link>
-        </div>
-    </div> -->
-    <router-view />
+    <div>
+        <header>
+            <div class="site-layout">HEADER</div>
+        </header>
+        <main>
+            <div class="site-layout">
+                <router-view />
+            </div>
+        </main>
+        <footer>
+            <div class="site-layout">FOOTER</div>
+        </footer>
+    </div>
 </template>
 
 <script>
@@ -22,12 +28,8 @@ export default {
 </script>
 
 <style>
-.nav a {
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.nav a.router-link-exact-active {
-    color: #42b983;
+main .site-layout {
+    width: 60em;
+    margin: 0 auto;
 }
 </style>

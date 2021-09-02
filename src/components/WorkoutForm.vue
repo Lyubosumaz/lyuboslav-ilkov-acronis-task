@@ -11,14 +11,7 @@
                 <el-input v-model="form.name"></el-input>
             </el-form-item>
 
-            <el-button
-                type="primary"
-                @click="
-                    {
-                        createWorkout(form.name);
-                        form.name = '';
-                    }
-                "
+            <el-button type="primary" @click="createWorkoutButton(form.name)"
                 >Create Workout</el-button
             >
         </el-form>
@@ -26,7 +19,8 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
+import { mockFetchREST } from '../utils/mockFetch';
 
 export default {
     name: 'WorkoutForm',
@@ -37,14 +31,21 @@ export default {
             },
         };
     },
-    methods: mapActions(['createWorkout']),
+    methods: {
+        ...mapActions(['createWorkout']),
+        createWorkoutButton(workoutName) {
+            this.createWorkout(workoutName);
+            this.form.name = '';
+
+            mockFetchREST(this.getWorkouts);
+        },
+    },
+    computed: mapGetters(['getWorkouts']),
 };
 </script>
 
 <style scoped>
 .workout-form {
-    width: 60em;
-    margin: 0 auto;
     padding: 1em;
 }
 .workout-form-wrapper {

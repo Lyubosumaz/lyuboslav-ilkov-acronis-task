@@ -34,6 +34,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import { mockFetchREST } from '../utils/mockFetch';
 
 export default {
     name: 'EditExercise',
@@ -50,10 +51,7 @@ export default {
             ]);
 
             // mockFetch 'PUT'
-            sessionStorage.setItem(
-                'mockWorkoutData',
-                JSON.stringify({ 'workout-list': this.getWorkouts })
-            );
+            mockFetchREST(this.getWorkouts);
 
             this.$router.push('/');
         },

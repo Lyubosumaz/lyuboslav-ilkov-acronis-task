@@ -25,7 +25,7 @@
                                 ? 'toggle-btn-failure'
                                 : 'toggle-btn-success ',
                         ]"
-                        @click="completeExercise([workoutId, exercise.id])"
+                        @click="successButton(exercise.id)"
                         ><i
                             :class="[
                                 exercise.complete
@@ -45,7 +45,7 @@
                             type="primary"
                             icon="el-icon-edit"
                             circle
-                            @click="editButton(workoutId, exercises[index])"
+                            @click="editButton(exercises[index])"
                         ></el-button>
                     </el-tooltip>
 
@@ -81,6 +81,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import ExersiceForm from './ExersiceForm.vue';
+import { mockFetchREST } from '../utils/mockFetch';
 
 export default {
     name: 'ExersicesList',
@@ -98,8 +99,14 @@ export default {
             'setCurrentExercise',
             'deleteExercise',
         ]),
-        editButton(workoutId, currentExercise) {
-            this.setCurrentWorkout(workoutId);
+        successButton(exerciseId) {
+            this.completeExercise([this.workoutId, exerciseId]);
+
+            // mockFetch 'PUT'
+            mockFetchREST(this.getWorkouts);
+        },
+        editButton(currentExercise) {
+            this.setCurrentWorkout(this.workoutId);
             this.setCurrentExercise(currentExercise);
             this.$router.push('/edit-exercise');
         },
@@ -107,10 +114,7 @@ export default {
             this.deleteExercise([this.workoutId, exerciseId]);
 
             // mockFetch 'DELETE'
-            sessionStorage.setItem(
-                'mockWorkoutData',
-                JSON.stringify({ 'workout-list': this.getWorkouts })
-            );
+            mockFetchREST(this.getWorkouts);
         },
     },
     computed: mapGetters(['getWorkouts']),
@@ -125,15 +129,6 @@ export default {
 .exersice-card {
     margin: 0.5em;
     border-width: 2px;
-}
-.exersice-title {
-    width: 20rem;
-    display: inline-block;
-}
-.exersice-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 .complete {
     border-color: #67c23a;
