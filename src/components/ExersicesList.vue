@@ -53,18 +53,40 @@
             </el-card>
         </li>
 
-        <el-button
-            @click="
-                createExercise([
-                    workoutId,
-                    {
-                        name: 'Test Exercise',
-                        sets: 'do as much as you can',
-                    },
-                ])
-            "
-            >Create Exercise</el-button
-        >
+        <section>
+            <h3>Add new exercise:</h3>
+            <el-form
+                ref="form"
+                :model="form"
+                label-width="120px"
+                class="exersice-form-wrapper"
+            >
+                <el-form-item label="Exercise name">
+                    <el-input v-model="form.name"></el-input>
+                </el-form-item>
+
+                <el-form-item label="Exercise sets">
+                    <el-input v-model="form.sets"></el-input>
+                </el-form-item>
+
+                <el-button
+                    @click="
+                        {
+                            createExercise([
+                                workoutId,
+                                {
+                                    name: form.name,
+                                    sets: form.sets,
+                                },
+                            ]);
+                            form.name = '';
+                            form.sets = '';
+                        }
+                    "
+                    >Add Exercise</el-button
+                >
+            </el-form>
+        </section>
     </ul>
 </template>
 <script>
@@ -75,6 +97,14 @@ export default {
     props: {
         workoutId: Number,
         exercises: Array,
+    },
+    data() {
+        return {
+            form: {
+                name: '',
+                sets: '',
+            },
+        };
     },
     methods: {
         ...mapActions(['createExercise', 'completeExercise', 'deleteExercise']),
@@ -116,5 +146,12 @@ export default {
 }
 .toggle-btn-failure {
     background-color: #f56c6c;
+}
+.exersice-form-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.exersice-form-wrapper .el-form-item {
+    margin: 0;
 }
 </style>
