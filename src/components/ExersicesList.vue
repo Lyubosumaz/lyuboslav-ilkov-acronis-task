@@ -16,7 +16,7 @@
                     <p>{{ exercise.sets }}</p>
                 </div>
 
-                <div>
+                <div class="button-wrapper">
                     <el-button
                         circle
                         class="toggle-btn"
@@ -35,20 +35,41 @@
                         ></i
                     ></el-button>
 
-                    <el-popconfirm
-                        title="You want to delete the exercise?"
-                        @confirm="deleteExercise([workoutId, exercise.id])"
-                        confirm-button-text="Delete"
-                        icon="el-icon-delete"
-                        icon-color="red"
+                    <el-tooltip
+                        class="item"
+                        effect="dark"
+                        content="Edit"
+                        placement="top"
                     >
                         <el-button
-                            slot="reference"
-                            type="danger"
-                            icon="el-icon-delete"
+                            type="primary"
+                            icon="el-icon-edit"
                             circle
+                            @click="editButton(workoutId, exercises[index])"
                         ></el-button>
-                    </el-popconfirm>
+                    </el-tooltip>
+
+                    <el-tooltip
+                        class="item"
+                        effect="dark"
+                        content="Delete"
+                        placement="top"
+                    >
+                        <el-popconfirm
+                            title="You want to delete the exercise?"
+                            @confirm="deleteButton(exercise.id)"
+                            confirm-button-text="Delete"
+                            icon="el-icon-delete"
+                            icon-color="red"
+                        >
+                            <el-button
+                                slot="reference"
+                                type="danger"
+                                icon="el-icon-delete"
+                                circle
+                            ></el-button>
+                        </el-popconfirm>
+                    </el-tooltip>
                 </div>
             </el-card>
         </li>
@@ -56,8 +77,9 @@
         <ExersiceForm :workoutId="workoutId" />
     </ul>
 </template>
+
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import ExersiceForm from './ExersiceForm.vue';
 
 export default {
@@ -69,17 +91,29 @@ export default {
         workoutId: Number,
         exercises: Array,
     },
-    data() {
-        return {
-            form: {
-                name: '',
-                sets: '',
-            },
-        };
-    },
     methods: {
-        ...mapActions(['completeExercise', 'deleteExercise']),
+        ...mapActions([
+            'completeExercise',
+            'setCurrentWorkout',
+            'setCurrentExercise',
+            'deleteExercise',
+        ]),
+        editButton(workoutId, currentExercise) {
+            this.setCurrentWorkout(workoutId);
+            this.setCurrentExercise(currentExercise);
+            this.$router.push('/edit-exercise');
+        },
+        deleteButton(exerciseId) {
+            this.deleteExercise([this.workoutId, exerciseId]);
+
+            // mockFetch 'DELETE'
+            sessionStorage.setItem(
+                'mockWorkoutData',
+                JSON.stringify({ 'workout-list': this.getWorkouts })
+            );
+        },
     },
+    computed: mapGetters(['getWorkouts']),
 };
 </script>
 
@@ -108,8 +142,10 @@ export default {
 .incomplete {
     border-color: #909399;
 }
-.toggle-btn {
+.button-wrapper button + button {
     margin-right: 0.5em;
+}
+.toggle-btn {
     color: #fff;
 }
 .toggle-btn-success {

@@ -51,7 +51,7 @@ export default {
     display: flex;
     justify-content: space-between;
 }
-.workout-form-wrapper .el-form-item {
+.workout-form-wrapper > div {
     margin: 0;
 }
 </style>

@@ -1,9 +1,13 @@
 const state = {
     workouts: [],
+    selectedWorkoutIdId: null,
+    selectedExercise: null,
 };
 
 const getters = {
     getWorkouts: (state) => state.workouts,
+    getCurrentWorkoutId: (state) => state.selectedWorkoutId,
+    getCurrentExercise: (state) => state.selectedExercise,
 };
 
 const actions = {
@@ -12,6 +16,9 @@ const actions = {
             'workout-list'
         ];
         commit('setWorkouts', mockResponse);
+    },
+    setCurrentWorkout({ commit }, data) {
+        commit('saveCurrentWorkoutId', data);
     },
     createWorkout({ commit }, data) {
         commit('addWorkout', data);
@@ -25,6 +32,14 @@ const actions = {
     completeExercise({ commit }, data) {
         commit('updateExercise', data);
         commit('checkWorkoutCompletion', data);
+    },
+    setCurrentExercise({ commit }, data) {
+        commit('saveCurrentExercise', data);
+    },
+    updateNameAndSetsExercise({ commit }, data) {
+        commit('updateDataExercise', data);
+        commit('removeSelectedWorkoutId');
+        commit('removeSelectedExercise');
     },
     deleteExercise({ commit }, data) {
         commit('removeExercise', data);
@@ -46,6 +61,9 @@ const mutations = {
         state.workouts = state.workouts.filter(
             (workout) => workout.id !== targetWorkout
         );
+    },
+    saveCurrentWorkoutId: (state, data) => {
+        state.selectedWorkoutId = data;
     },
     addExercise: (state, [targetWorkout, data]) => {
         state.workouts.forEach((workout) => {
@@ -73,6 +91,27 @@ const mutations = {
             }
         });
     },
+    saveCurrentExercise: (state, data) => {
+        state.selectedExercise = data;
+    },
+    updateDataExercise: (state, [targetWorkout, targetExercise, data]) => {
+        console.log(targetWorkout, targetExercise, data);
+
+        state.workouts.forEach((workout) => {
+            if (workout.id === targetWorkout) {
+                workout.exercises = workout.exercises.map((exercise) => {
+                    if (exercise.id === targetExercise) {
+                        return {
+                            ...exercise,
+                            name: data.name,
+                            sets: data.sets,
+                        };
+                    }
+                    return exercise;
+                });
+            }
+        });
+    },
     removeExercise: (state, [targetWorkout, targetExercise]) => {
         state.workouts.forEach((workout) => {
             if (workout.id === targetWorkout) {
@@ -89,13 +128,22 @@ const mutations = {
                     (exercise) => exercise.complete != true
                 ).length;
 
-                if (numberOfIncompleteExercises === 0) {
+                if (
+                    numberOfIncompleteExercises === 0 &&
+                    workout.exercises.length
+                ) {
                     workout.workoutComplete = true;
                 } else {
                     workout.workoutComplete = false;
                 }
             }
         });
+    },
+    removeSelectedWorkoutId: (state) => {
+        state.selectedWorkoutId = null;
+    },
+    removeSelectedExercise: (state) => {
+        state.selectedExercise = null;
     },
 };
 

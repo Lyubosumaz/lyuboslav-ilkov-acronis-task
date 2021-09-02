@@ -22,7 +22,7 @@
                             <el-tooltip
                                 class="item"
                                 effect="dark"
-                                content="Delete The Workout"
+                                content="Delete Workout"
                                 placement="right"
                             >
                                 <el-popconfirm
