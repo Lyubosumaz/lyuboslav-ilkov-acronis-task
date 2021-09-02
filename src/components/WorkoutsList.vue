@@ -2,30 +2,7 @@
     <section>
         <h1>{{ msg }}</h1>
 
-        <section class="workout-form">
-            <h3>Add a workout:</h3>
-            <el-form
-                ref="form"
-                :model="form"
-                label-width="120px"
-                class="workout-form-wrapper"
-            >
-                <el-form-item label="Workout name">
-                    <el-input v-model="form.name"></el-input>
-                </el-form-item>
-
-                <el-button
-                    type="primary"
-                    @click="
-                        {
-                            createWorkout(form.name);
-                            form.name = '';
-                        }
-                    "
-                    >Create Workout</el-button
-                >
-            </el-form>
-        </section>
+        <WorkoutForm />
 
         <ul class="workouts-list">
             <li v-for="(workout, index) in getWorkouts" :key="index">
@@ -87,9 +64,14 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import ExersicesList from './ExersicesList.vue';
+import WorkoutForm from './WorkoutForm.vue';
 
 export default {
     name: 'WorkoutsList',
+    components: {
+        ExersicesList,
+        WorkoutForm,
+    },
     props: {
         msg: String,
     },
@@ -100,17 +82,8 @@ export default {
             },
         };
     },
-    components: {
-        ExersicesList,
-    },
     methods: {
-        ...mapActions([
-            'mockFetch',
-            'createWorkout',
-            'deleteWorkout',
-            'createExercise',
-            'deleteExercise',
-        ]),
+        ...mapActions(['mockFetch', 'deleteWorkout']),
     },
     computed: mapGetters(['getWorkouts']),
     created() {
@@ -120,18 +93,6 @@ export default {
 </script>
 
 <style scoped>
-.workout-form {
-    width: 60em;
-    margin: 0 auto;
-    padding: 1em;
-}
-.workout-form-wrapper {
-    display: flex;
-    justify-content: space-between;
-}
-.workout-form-wrapper .el-form-item {
-    margin: 0;
-}
 .workouts-list {
     width: 60em;
     margin: 0 auto;
