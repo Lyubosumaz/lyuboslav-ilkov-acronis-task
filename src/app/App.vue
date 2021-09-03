@@ -38,6 +38,11 @@ export default {
 </script>
 
 <style>
+.site {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 .site-layout {
     width: 60rem;
     margin: 0 auto;
@@ -48,7 +53,7 @@ header {
 }
 footer {
     background-color: #c6f0e6;
-    margin-top: 8em;
+    margin-top: auto;
     padding-top: 1em;
 }
 footer .site-layout {
