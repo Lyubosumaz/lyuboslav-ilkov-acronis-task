@@ -80,8 +80,8 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import ExerciseForm from './ExerciseForm.vue';
-import { mockFetchREST } from '../utils/mockFetch';
+import ExerciseForm from '@/components/ExerciseForm.vue';
+import { mockFetchREST } from '@/utils/mockFetch';
 
 export default {
     name: 'ExersicesList',

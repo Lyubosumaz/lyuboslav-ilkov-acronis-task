@@ -20,13 +20,13 @@ Open browser
 http://localhost:8080
 ```
 
-### Run your unit tests
+### Run unit tests
 
 ```
 npm run test:unit
 ```
 
-### Run your lint
+### Run lint
 
 ```
 npm run lint --fix

@@ -81,9 +81,9 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import ExerciseList from './ExerciseList.vue';
-import WorkoutForm from './WorkoutForm.vue';
-import { mockFetchREST } from '../utils/mockFetch';
+import ExerciseList from '@/components/ExerciseList.vue';
+import WorkoutForm from '@/components/WorkoutForm.vue';
+import { mockFetchREST } from '@/utils/mockFetch';
 
 export default {
     name: 'WorkoutsList',

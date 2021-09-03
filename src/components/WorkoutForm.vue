@@ -20,7 +20,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { mockFetchREST } from '../utils/mockFetch';
+import { mockFetchREST } from '@/utils/mockFetch';
 
 export default {
     name: 'WorkoutForm',

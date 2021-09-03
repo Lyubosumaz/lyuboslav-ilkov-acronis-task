@@ -7,17 +7,17 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        component: () => import('../views/Home.vue'),
+        component: () => import('@/views/Home.vue'),
     },
     {
         path: '/edit-exercise',
         name: 'EditExercise',
-        component: () => import('../views/EditExercise.vue'),
+        component: () => import('@/views/EditExercise.vue'),
     },
     {
         path: '/edit-workout',
         name: 'EditWorkout',
-        component: () => import('../views/EditWorkout.vue'),
+        component: () => import('@/views/EditWorkout.vue'),
     },
 ];
 
