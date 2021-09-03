@@ -1,12 +1,33 @@
-import { shallowMount } from '@vue/test-utils';
-import HelloWorld from '@/components/HelloWorld.vue';
+import { mount, createLocalVue } from '@vue/test-utils';
+import ElementUI from 'element-ui';
+import ExerciseForm from '@/components/ExerciseForm.vue';
 
-describe('HelloWorld.vue', () => {
-    it('renders props.msg when passed', () => {
-        const msg = 'new message';
-        const wrapper = shallowMount(HelloWorld, {
-            propsData: { msg },
-        });
-        expect(wrapper.text()).toMatch(msg);
+describe('raw ExerciseForm', () => {
+    it('has data', () => {
+        expect(typeof ExerciseForm.data).toBe('function');
+    });
+});
+
+describe('mounted ExerciseForm', () => {
+    const localVue = createLocalVue();
+    localVue.use(ElementUI);
+    const wrapper = mount(ExerciseForm, { localVue });
+
+    test('is a Vue with ElementUI instance', () => {
+        expect(wrapper.vm).toBeTruthy();
+    });
+
+    it('renders the correct markup h3', () => {
+        expect(wrapper.html()).toContain('<h3>Add new exercise:</h3>');
+    });
+});
+
+describe('snapshot ExerciseForm', () => {
+    const localVue = createLocalVue();
+    localVue.use(ElementUI);
+    const wrapper = mount(ExerciseForm, { localVue });
+
+    it('renders correctly to match snapshot', () => {
+        expect(wrapper.element).toMatchSnapshot();
     });
 });

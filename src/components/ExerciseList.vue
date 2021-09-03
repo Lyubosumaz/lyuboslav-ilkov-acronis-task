@@ -74,19 +74,19 @@
             </el-card>
         </li>
 
-        <ExersiceForm :workoutId="workoutId" />
+        <ExerciseForm :workoutId="workoutId" />
     </ul>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import ExersiceForm from './ExersiceForm.vue';
+import ExerciseForm from './ExerciseForm.vue';
 import { mockFetchREST } from '../utils/mockFetch';
 
 export default {
     name: 'ExersicesList',
     components: {
-        ExersiceForm,
+        ExerciseForm,
     },
     props: {
         workoutId: Number,

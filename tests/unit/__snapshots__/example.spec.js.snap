@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot ExerciseForm renders correctly to match snapshot 1`] = `
+<section>
+  <h3>
+    Add new exercise:
+  </h3>
+   
+  <form
+    class="el-form exersice-form-wrapper"
+  >
+    <div
+      class="el-form-item"
+    >
+      <label
+        class="el-form-item__label"
+        style="width: 120px;"
+      >
+        Exercise name
+      </label>
+      <div
+        class="el-form-item__content"
+        style="margin-left: 120px;"
+      >
+        <div
+          class="el-input"
+        >
+          <!---->
+          <input
+            autocomplete="off"
+            class="el-input__inner"
+            type="text"
+          />
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+        </div>
+        <transition-stub
+          name="el-zoom-in-top"
+        >
+          <!---->
+        </transition-stub>
+      </div>
+    </div>
+     
+    <div
+      class="el-form-item"
+    >
+      <label
+        class="el-form-item__label"
+        style="width: 120px;"
+      >
+        Exercise sets
+      </label>
+      <div
+        class="el-form-item__content"
+        style="margin-left: 120px;"
+      >
+        <div
+          class="el-input"
+        >
+          <!---->
+          <input
+            autocomplete="off"
+            class="el-input__inner"
+            type="text"
+          />
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+        </div>
+        <transition-stub
+          name="el-zoom-in-top"
+        >
+          <!---->
+        </transition-stub>
+      </div>
+    </div>
+     
+    <button
+      class="el-button el-button--default"
+      type="button"
+    >
+      <!---->
+      <!---->
+      <span>
+        Add Exercise
+      </span>
+    </button>
+  </form>
+</section>
+`;

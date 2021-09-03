@@ -69,7 +69,7 @@
                         </h5>
                     </div>
 
-                    <ExersicesList
+                    <ExerciseList
                         :workoutId="workout.id"
                         :exercises="workout.exercises"
                     />
@@ -81,14 +81,14 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import ExersicesList from './ExersicesList.vue';
+import ExerciseList from './ExerciseList.vue';
 import WorkoutForm from './WorkoutForm.vue';
 import { mockFetchREST } from '../utils/mockFetch';
 
 export default {
     name: 'WorkoutsList',
     components: {
-        ExersicesList,
+        ExerciseList,
         WorkoutForm,
     },
     data() {
