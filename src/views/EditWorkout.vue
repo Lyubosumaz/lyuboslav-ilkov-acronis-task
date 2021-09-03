@@ -52,8 +52,14 @@ export default {
 </script>
 
 <style scoped>
+.edit-page {
+    width: 30em;
+    margin: 0 auto;
+}
 .title-wrapper {
+    padding-bottom: 3em;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 .edit-workout-form-wrapper {

@@ -67,19 +67,26 @@ export default {
 </script>
 
 <style scoped>
+.edit-page {
+    width: 30em;
+    margin: 0 auto;
+}
 .title-wrapper {
+    padding-bottom: 3em;
     display: flex;
     align-items: center;
 }
 .edit-exersice-form-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-}
-.edit-exersice-form-wrapper > div {
-    margin: 0;
 }
 .edit-exersice-form-wrapper label {
     width: auto;
     line-height: 1;
+}
+.edit-exersice-form-wrapper button {
+    width: 10em;
+    align-self: flex-end;
 }
 </style>
