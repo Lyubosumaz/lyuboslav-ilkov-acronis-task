@@ -1,7 +1,7 @@
 {
     "workout-list": [
         {
-            "id": 1,
+            "id": 3,
             "workoutName": "Chest Shoulders & Triceps",
             "workoutComplete": false,
             "exercises": [
@@ -93,7 +93,7 @@
             ]
         },
         {
-            "id": 3,
+            "id": 1,
             "workoutName": "Legs and Core",
             "workoutComplete": false,
             "exercises": [

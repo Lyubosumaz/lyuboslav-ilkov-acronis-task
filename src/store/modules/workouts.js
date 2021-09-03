@@ -62,7 +62,16 @@ const mutations = {
     setWorkouts: (state, data) => (state.workouts = data),
     addWorkout: (state, data) => {
         state.workouts.unshift({
-            id: state?.workouts.length ? state.workouts.length + 1 : 1,
+            id: state?.workouts.length
+                ? 1 +
+                  state.workouts.reduce((acc, curr) => {
+                      if (acc < curr.id) {
+                          return curr.id;
+                      } else {
+                          return acc;
+                      }
+                  }, -Infinity)
+                : 1,
             workoutName: data,
             workoutComplete: false,
             exercises: [],
@@ -91,7 +100,12 @@ const mutations = {
             if (workout.id === targetWorkout) {
                 workout.exercises.push({
                     id: workout?.exercises.length
-                        ? workout.exercises.length + 1
+                        ? 1 +
+                          workout.exercises.reduce((acc, curr) => {
+                              if (acc < curr.id) {
+                                  return curr.id;
+                              }
+                          }, -Infinity)
                         : 1,
                     name: data.name,
                     sets: data.sets,
@@ -116,7 +130,6 @@ const mutations = {
         state.selectedExercise = data;
     },
     updateDataExercise: (state, [targetWorkout, targetExercise, data]) => {
-        console.log('test', targetWorkout, targetExercise);
         state.workouts.forEach((workout) => {
             if (workout.id === targetWorkout) {
                 workout.exercises = workout.exercises.map((exercise) => {
