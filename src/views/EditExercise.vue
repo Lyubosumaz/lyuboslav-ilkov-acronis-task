@@ -6,7 +6,7 @@
                     @click="$router.go(-1)"
                     style="padding: 0.5em; margin-right: 1.25rem"
                     ><i class="el-icon-caret-left"></i>
-                    <span> Go Back </span>
+                    <span>Go Back</span>
                 </el-button>
             </div>
 
@@ -15,19 +15,21 @@
 
         <el-form
             ref="form"
-            :model="getCurrentExercise"
+            :model="form"
             label-width="120px"
             class="edit-exersice-form-wrapper"
         >
             <el-form-item label="Edit name">
-                <el-input v-model="getCurrentExercise.name"></el-input>
+                <el-input v-model="form.name"></el-input>
             </el-form-item>
 
             <el-form-item label="Edit sets">
-                <el-input v-model="getCurrentExercise.sets"></el-input>
+                <el-input v-model="form.sets"></el-input>
             </el-form-item>
 
-            <el-button @click="editExercise()">Edit Exercise</el-button>
+            <el-button @click="editExercise(form.name, form.sets)"
+                >Edit Exercise</el-button
+            >
         </el-form>
     </div>
 </template>
@@ -38,15 +40,27 @@ import { mockFetchREST } from '../utils/mockFetch';
 
 export default {
     name: 'EditExercise',
+    data() {
+        return {
+            form: {
+                name: '',
+                sets: '',
+            },
+        };
+    },
+    mounted() {
+        this.form.name = this.getCurrentExercise.name;
+        this.form.sets = this.getCurrentExercise.sets;
+    },
     methods: {
         ...mapActions(['updateNameAndSetsExercise']),
-        editExercise() {
+        editExercise(exerciseName, exerciseSets) {
             this.updateNameAndSetsExercise([
                 this.getCurrentWorkoutId,
                 this.getCurrentExercise.id,
                 {
-                    name: this.getCurrentExercise.name,
-                    sets: this.getCurrentExercise.sets,
+                    name: exerciseName,
+                    sets: exerciseSets,
                 },
             ]);
 

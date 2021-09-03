@@ -15,15 +15,15 @@
 
         <el-form
             ref="form"
-            :model="getCurrentWorkout"
+            :model="workout"
             label-width="120px"
             class="edit-workout-form-wrapper"
         >
             <el-form-item label="New workout">
-                <el-input v-model="getCurrentWorkout.workoutName"></el-input>
+                <el-input v-model="workout.workoutName"></el-input>
             </el-form-item>
 
-            <el-button @click="editWorkout()">Edit Workout</el-button>
+            <el-button @click="editWorkout(workout)">Edit Workout</el-button>
         </el-form>
     </div>
 </template>
@@ -34,10 +34,18 @@ import { mockFetchREST } from '../utils/mockFetch';
 
 export default {
     name: 'EditWorkout',
+    data() {
+        return {
+            workout: { name: '' },
+        };
+    },
+    mounted() {
+        this.workout = { ...this.getCurrentWorkout };
+    },
     methods: {
         ...mapActions(['updateCurrentWorkout']),
-        editWorkout() {
-            this.updateCurrentWorkout([this.getCurrentWorkout.workoutName]);
+        editWorkout(workout) {
+            this.updateCurrentWorkout(workout);
 
             // mockFetch 'PUT'
             mockFetchREST(this.getWorkouts);

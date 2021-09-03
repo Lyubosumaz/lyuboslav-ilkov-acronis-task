@@ -91,7 +91,7 @@ const mutations = {
     updateDataWorkout: (state, data) => {
         state.workouts.forEach((workout) => {
             if (workout.id === data.id) {
-                workout.workoutName = data;
+                workout.workoutName = data.workoutName;
             }
         });
     },
